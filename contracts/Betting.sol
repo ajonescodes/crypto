@@ -12,7 +12,7 @@ struct Player {
 // The address of the player and => the user info
    mapping(address => Player) public playerInfo;
 function() public payable {}
-function Betting() public {
+constructor() public {
       owner = msg.sender;
       minimumBet = 100000000000000;
     }
@@ -86,9 +86,9 @@ function checkPlayerExists(address player) public constant returns(bool){
           // Check that the address in this fixed array is not empty
          if(winners[j] != address(0)) 
             address add = winners[j];
-            uint256 bet = playerInfo[add].amountBet;
+            uint256 betAmt = playerInfo[add].amountBet;
             //Transfer the money to the user 
-            winners[j].transfer(    (bet*(10000+(LoserBet*10000/WinnerBet)))/10000 );
+            winners[j].transfer(    (betAmt*(10000+(LoserBet*10000/WinnerBet)))/10000 );
       }
       delete playerInfo[playerAddress]; // Delete all the players
       players.length = 0; // Delete all the players array
