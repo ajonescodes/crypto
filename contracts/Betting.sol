@@ -1,5 +1,8 @@
 pragma solidity ^0.4.2;
-contract Betting {
+
+import "../Ownable.sol";
+
+contract Betting is Ownable {
    address public owner;
    uint256 public minimumBet;
    uint256 public totalBetsOne;
